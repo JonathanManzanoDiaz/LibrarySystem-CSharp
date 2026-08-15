@@ -1,47 +1,52 @@
-﻿using LibrarySystem.Menus;
-using LibrarySystem.Services;
-using LibrarySystem.Models;
-
-
-namespace LibrarySystem
+﻿namespace LibrarySystem
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string prompt = "Menu Library System";
-            string[] options = { "Add Book", "Add Member", "List Books", "List Members", "Borrow Book", "Return Book", "Exit" };
-            Menu mainMenu = new Menu(prompt, options);
-            bool appRunning = true;
-            while (appRunning)
+            
+            bool appActive = true;
+            while(appActive)
             {
-                int SelectedIndex = mainMenu.Run();
-                switch (SelectedIndex)
+                int final = Library.Menu() - 48;
+                switch (final)
                 {
                     case 0:
-                        Book.AddBook();
+                        appActive = false;
                         break;
                     case 1:
-                        Member.AddMember();
-                        break;
-                    case 2:
+                        ClearConsole();
+
                         Book.ListBooks();
                         break;
+                    case 2:
+                        Book.AddBook();
+                        ClearConsole();
+
+                        break;
                     case 3:
-                        Member.ListMembers();
+                        Book.RemoveBook();
+                        ClearConsole();
                         break;
                     case 4:
-                        LibraryService.BorrowBook();
+                        Library.BorrowBook();
                         break;
                     case 5:
-                        LibraryService.ReturnBook();
+                        Library.ReturnBook();
                         break;
-                    case 6:
-                        Console.WriteLine("Goodbye! Welcome back!");
-                        appRunning = false;
+                    default:
+                        Console.WriteLine("Please, select an option of the options given.");
+                        ClearConsole();
                         break;
+
                 }
+
             }
+        }
+        static void ClearConsole()
+        {
+            Thread.Sleep(1000);
+            Console.Clear();
         }
     }
 }

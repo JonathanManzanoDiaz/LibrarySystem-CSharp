@@ -1,164 +1,72 @@
-# Library System
+\# 📚 Sistema de Gestión de Biblioteca (C#)
 
-A console-based library management application built with C# and .NET. The project demonstrates fundamental object-oriented programming concepts through a simple interactive system for managing books, members, borrowing, and returns.
 
-## Features
 
-- Interactive console menu controlled with the arrow keys
-- Add books to the library catalogue
-- Register library members
-- Display all books
-- Display all registered members
-- Borrow available books
-- Return borrowed books
-- Track whether a book is available or currently borrowed
-- Basic exception handling for invalid input
+Un sistema de gestión de biblioteca basado en la consola de comandos (CLI) construido con \*\*C# y .NET 10\*\*. Este proyecto fue desarrollado como parte del reto de aprendizaje continuo ("C# Hero Roadmap 56 Days" - Semana 2, Día 14) para consolidar conceptos de Programación Orientada a Objetos (POO).
 
-## Technologies
 
-- C#
-- .NET 10
-- Console application
-- `List<T>` collections
-- Object-oriented programming
 
-The project currently uses standard loops and conditional statements rather than LINQ.
+\## 🚀 Características
 
-## Project Structure
+\- \*\*Listar Libros:\*\* Visualiza todo el catálogo de la biblioteca junto con su estado de disponibilidad y detalles de publicación.
 
-```text
-LibrarySystem/
-├── Menus/
-│   └── Menu.cs
-├── Models/
-│   ├── Book.cs
-│   └── Member.cs
-├── Services/
-│   └── LibraryService.cs
-├── Program.cs
-└── LibrarySystem.csproj
-```
+\- \*\*Añadir Libro:\*\* Ingresa el título, autor y año de publicación para agregar nuevos libros al sistema.
 
-### Main components
+\- \*\*Eliminar Libro:\*\* Elimina libros del registro utilizando su ID único.
 
-- **`Program.cs`** — Starts the application and handles the main menu options.
-- **`Menu.cs`** — Displays the interactive menu and processes keyboard navigation.
-- **`Book.cs`** — Defines book data and contains book creation and listing operations.
-- **`Member.cs`** — Defines member data and contains member registration and listing operations.
-- **`LibraryService.cs`** — Contains the borrowing and returning logic.
+\- \*\*Prestar Libro:\*\* Busca un libro y, si está disponible, márcalo como "prestado".
 
-## Requirements
+\- \*\*Devolver Libro:\*\* Marca un libro prestado como "disponible" nuevamente en el inventario.
 
-To build and run the application, install:
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
-- A terminal or an IDE such as Visual Studio, Visual Studio Code, or JetBrains Rider
 
-## Installation
+\## 🛠️ Tecnologías Utilizadas
 
-Clone the repository:
+\- \*\*Lenguaje:\*\* C#
 
-```bash
-git clone https://github.com/YOUR-USERNAME/LibrarySystem.git
-```
+\- \*\*Framework:\*\* .NET 10.0
 
-Open the project directory:
+\- \*\*Paradigma:\*\* Programación Orientada a Objetos (POO)
 
-```bash
-cd LibrarySystem/LibrarySystem
-```
 
-Restore the project dependencies:
 
-```bash
-dotnet restore
-```
+\## 📂 Estructura del Código
 
-Build the application:
+\- `Program.cs`: Maneja el ciclo principal de la interfaz de usuario, limpiando la consola y procesando las entradas del menú mediante estructuras `switch`.
 
-```bash
-dotnet build
-```
+\- `Library.cs`: Gestiona los menús y actúa como puente para las interacciones del usuario de préstamos y devoluciones.
 
-Run it:
+\- `Book.cs`: La clase principal que define las propiedades del libro (Título, Autor, Año, Estado), y gestiona la lógica de la lista genérica `List<Book>` para almacenar los registros de manera persistente durante la ejecución.
 
-```bash
-dotnet run
-```
 
-## How to Use
 
-Use the **Up Arrow** and **Down Arrow** keys to move through the menu. Press **Enter** to select an option.
+\## ⚙️ Cómo Ejecutar el Proyecto
 
-The available menu options are:
+Asegúrate de tener instalado el \[SDK de .NET 10](https://dotnet.microsoft.com/download).
 
-1. Add Book
-2. Add Member
-3. List Books
-4. List Members
-5. Borrow Book
-6. Return Book
-7. Exit
 
-### Example book entry
 
-```text
-What is the name of the book?: The Hobbit
-What is the name of the author?: J.R.R. Tolkien
-What is the year of publication?: 1937
-Book added successfully!
-```
+1\. Clona este repositorio o descarga el código fuente.
 
-### Example catalogue output
+2\. Abre una terminal (o consola de comandos) y navega hasta la carpeta raíz del proyecto (donde se encuentra el archivo `LibrarySystem.csproj`).
 
-```text
-1 | The Hobbit by J.R.R. Tolkien
-2 | 1984 by George Orwell
-```
+3\. Ejecuta el siguiente comando para compilar y lanzar la aplicación:
 
-## Data Storage
+&#x20;  ```bash
 
-The application currently stores books and members in memory using `List<T>` collections. Data is reset whenever the program is closed.
+&#x20;  dotnet run
 
-No database or external file storage is currently used.
+&#x20;  ```
 
-## Current Limitations
 
-- Borrowed books are not yet associated with a specific member.
-- Data is not saved between application sessions.
-- Input validation can be expanded further.
-- The application does not currently support deleting or editing books and members.
-- There are no due dates, borrowing limits, or overdue penalties.
 
-## Planned Improvements
+\## 🧠 Aprendizajes Destacados
 
-- Associate every borrowed book with a registered member
-- Display which member currently has each borrowed book
-- Validate book and member IDs before completing an operation
-- Replace `int.Parse` with `int.TryParse` where appropriate
-- Add due dates and loan history
-- Allow books and members to be edited or removed
-- Save data to JSON files or a database
-- Add automated unit tests
+\- Uso de `List<T>` para almacenamiento en memoria.
 
-## Learning Objectives
+\- Auto-properties y manejo de estado de objetos (`Available`).
 
-This project was created to practise:
+\- Interacción de menús en consola limpia usando `Console.Clear()` y `Console.ReadLine()`.
 
-- Classes and objects
-- Constructors and properties
-- Static members
-- Lists and iteration
-- Conditional logic
-- Exception handling
-- Separation of responsibilities
-- Console input and output
-- Basic application architecture
+\- Lógica de validación para evitar modificaciones concurrentes en bucles `foreach`.
 
-## Contributing
-
-This is a learning project, but suggestions and improvements are welcome. Feel free to fork the repository and open a pull request.
-
-## License
-
-This project is available for educational purposes. Add a licence file if you plan to distribute or reuse it publicly.
